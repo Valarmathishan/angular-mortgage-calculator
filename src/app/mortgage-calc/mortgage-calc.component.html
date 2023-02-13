@@ -1,0 +1,7 @@
+<section class="container">
+    <h1 class="text-primary text-center my-4">Simple Mortgage Calculator</h1>
+    <!--Mortgage Form Section-->
+    <app-mortgage-form (mortageDetails)="getMortageDetails($event)"></app-mortgage-form>
+    <!--Mortgage Detail Section-->
+    <app-mortgage-detail *ngIf="isDetailAvailable" [mortgageDetails]="mortgageDetails"></app-mortgage-detail>
+</section>

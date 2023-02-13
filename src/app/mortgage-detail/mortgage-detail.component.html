@@ -1,0 +1,35 @@
+<section class="container p-2">
+    <!--Mortgage Information-->
+    <div class="d-flex justify-content-left">
+        <div class="mortage-dtl bg-cl col-md-5 d-flex align-items-center mb-5">
+            <p class="h4 font-weight-light">Your {{mortgageDetails.paymentFrequency}} Payment :</p>
+            <p class="h2 font-weight-bold">{{ mortgageDetails.mortgagePayment | currency }}</p>
+        </div>
+        <div class="mortage-dtl col-md-5 ms-5 mb-4">
+            <h3 class="text-secondary">Your Mortgage Details</h3>
+            <!-- Displaying the calculated Motgage Details-->
+            <div class="row ps-4">
+                <p>Mortgage Amount: <b>{{ mortgageDetails.mortgageAmount | currency }}</b></p>
+                <p>Interest Rate: <b>{{ mortgageDetails.interstRate}}%</b></p>
+                <p>Amortization: <b>{{mortgageDetails.amortizationPeriodYear}} Years &
+                        {{mortgageDetails.amortizationPeriodMonth}} Months</b></p>
+                <p>Number of Payments : <b>{{ mortgageDetails.numberOfPaymentTerms}}</b></p>
+                <p>Interest Payments : <b>{{ mortgageDetails.interestPayment | currency }}</b></p>
+                <p>Total Cost : <b>{{ mortgageDetails.totalCost | currency }}</b></p>
+            </div>
+            <div class="form-check ms-4">
+                <input mdbCheckbox class="form-check-input" type="checkbox" value=""
+                    (change)="checkViewChartStatus($event)" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">
+                    Show Amortization Table
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!--Amortization Table-->
+    <div class="py-4">
+        <app-mortgage-amortization-table *ngIf="showTable"
+            [mortgageDetails]="mortgageDetails"></app-mortgage-amortization-table>
+    </div>
+</section>
