@@ -47,9 +47,8 @@ export class MortgageFormComponent implements OnInit {
     );
 
     let numberOfPaymentTerms =
-      this.paymentPlanForm.get('amortizationPeriodYear')?.value *
-        selectedPaymentFrequency!.numb +
-      this.paymentPlanForm.get('amortizationPeriodMonth')?.value;
+      +(this.paymentPlanForm.get('amortizationPeriodYear')?.value *
+        selectedPaymentFrequency!.numb) + (+this.paymentPlanForm.get('amortizationPeriodMonth')?.value);
     let principlePayment = +this.paymentPlanForm.get('mortgageAmount')?.value;
     let monthlyInterestRatio =
       this.paymentPlanForm.get('interstRate')?.value / 1200;
